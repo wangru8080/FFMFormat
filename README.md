@@ -22,14 +22,11 @@ value：当特征域不是连续特征时，value=1，若为连续特征，value
 
 对于pandas DataFrame格式数据来说:
 
-label  category_feature  continuous_feature  vector_feature
-=====  ================  ==================  ==============
-
-    0       x               1.1               1 2
-    
-    1       y               1.2               3 4 5
-    
-    0       x               2.2               6 7 8 9
+    label  category_feature  continuous_feature  vector_feature
+    =====  ================  ==================  ==============
+    0           x               1.1               1 2
+    1           y               1.2               3 4 5   
+    0           x               2.2               6 7 8 9
     
 
 ### 首先给各个特征域编号：
