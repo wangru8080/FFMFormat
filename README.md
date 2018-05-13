@@ -35,7 +35,7 @@ dict_field[continuous_feature] = 1
 
 dict_field[vector_feature] = 2
 
-### 然后再给每个特征值编号：
+### 然后给每个特征值编号：
 
 dict_feature[category_feature-x] = 0
 
