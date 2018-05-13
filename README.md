@@ -6,9 +6,7 @@ FM和FFM模型是最近几年提出的模型，凭借其在数据量比较大并
 
 为了使用FFM方法，所有特征必须转化成 
 
-label field_id:feature_id:value field_id:feature_id:value field_id:feature_id:value...
-
-的格式。
+label field_id:feature_id:value field_id:feature_id:value field_id:feature_id:value...的格式。
 
 field_id表示每一个特征域的id号
 
