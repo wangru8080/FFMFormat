@@ -1,4 +1,7 @@
 import pandas
+'''
+pandas to FFM
+'''
 
 def FFMFormat(df, label, path, category_feature = [], continuous_feature = [], vector_feature = []):
     index = df.shape[0]
