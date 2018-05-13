@@ -30,85 +30,48 @@ label  category_feature  continuous_feature  vector_feature
     
 
 首先给各个特征域编号：
-
 dict_field[category_feature] = 0
-
 dict_field[continuous_feature] = 1
-
 dict_field[vector_feature] = 2
 
 然后再给每个特征值编号：
-
 dict_feature[category_feature-x] = 0
-
 dict_feature[continuous_feature-1.1] = 1
-
 dict_feature[vector_feature-1] = 2
-
 dict_feature[vector_feature-2] = 3
-
 dict_feature[category_feature-y] = 4
-
 dict_feature[continuous_feature-1.2] = 5
-
 dict_feature[vector_feature-3] = 6
-
 dict_feature[vector_feature-4] = 7
-
 dict_feature[vector_feature-5] = 8
-
 dict_feature[category_feature-x] = 0 # category_feature重复项编号不变
-
 dict_feature[continuous_feature-2.2] = 9
-
 dict_feature[vector_feature-6] = 10
-
 dict_feature[vector_feature-7] = 11
-
 dict_feature[vector_feature-8] = 12
-
 dict_feature[vector_feature-9] = 13
 
 最后设置value的值：
-
 dict_value[category_feature-x] = 1
-
 dict_value[continuous_feature-1.1] = 1
-
 dict_value[vector_feature-1] = 1
-
 dict_value[vector_feature-2] = 1
-
 dict_value[category_feature-y] = 1
-
 dict_value[continuous_feature-1.2] = 1.2
-
 dict_value[vector_feature-3] = 1
-
 dict_value[vector_feature-4] = 1
-
 dict_value[vector_feature-5] = 1
-
 dict_value[category_feature-x] = 1 
-
 dict_value[continuous_feature-2.2] = 2.2
-
 dict_value[vector_feature-6] = 1
-
 dict_value[vector_feature-7] = 1
-
 dict_value[vector_feature-8] = 1
-
 dict_value[vector_feature-9] = 1
 
 综上，我们可得到FFM Format data：
-
 0 0:0:1 1:1:1.1 2:2:1 2:3:1
-
 1 0:4:1 1:5:1.2 2:6:1 2:7:1 2:8:1
-
 0 0:0:1 1:9:2.2 2:10:1 2:11:1 2:12:1 2:13:1
-
 
 本文仅有category_feature，continuous_feature，vector_feature。若还有其他特征可自行修改添加。
 
