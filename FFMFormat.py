@@ -1,11 +1,15 @@
 import pandas
+
 '''
 pandas to FFM
+df = train + test
+df.ffm -> train.ffm & test.ffm 
 '''
 
-def FFMFormat(df, label, path, category_feature = [], continuous_feature = [], vector_feature = []):
+def FFMFormat(df, label, path, train_len, category_feature = [], continuous_feature = [], vector_feature = []):
     index = df.shape[0]
-    data = open(path, 'w')
+    train = open(path + 'train.ffm', 'w')
+    test = open(path + 'test.ffm', 'w')
     feature_index = 0
     feat_index = {}
     for i in range(index):
@@ -37,7 +41,11 @@ def FFMFormat(df, label, path, category_feature = [], continuous_feature = [], v
                 feats.append('%s:%s:%s' % (field_index, feat_index[t], 1))
             field_index = field_index + 1
         print('%s %s' % (df[label][i], ' '.join(feats)))
-        data.write('%s %s\n' % (df[label][i], ' '.join(feats)))
-    data.close()
+        if i < train_len:
+            train.write('%s %s\n' % (df[label][i], ' '.join(feats)))
+        else:
+            test.write('%s\n' % (' '.join(feats)))
+    train.close()
+    test.close()
     
-FFMFormat(df, 'label', '../data/ffm/data.ffm', category_feature, continuous_feature, vector_feature)
+FFMFormat(df, 'label', '../data/ffm/', train_len, category_feature, continuous_feature, vector_feature)
