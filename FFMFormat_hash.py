@@ -8,9 +8,10 @@ def gen_hashed_fmm_feats(feats, nr_bins = int(1e+6)):
     feats = ['%s:%s:%s' %(field, hashstr(feat, nr_bins), value) for (field, feat, value) in feats]
     return feats
 
-def FFMFormat_hash(df, label, path, category_feature = [], continuous_feature = [], vector_feature = []):
+def FFMFormat_hash(df, label, path, train_len, category_feature = [], continuous_feature = [], vector_feature = []):
     index = df.shape[0]
-    data = open(path, 'w')
+    train = open(path + 'train.ffm', 'w')
+    test = open(path + 'test.ffm', 'w')
     feature_index = 0
     for i in range(index):
         feats = []
@@ -30,7 +31,11 @@ def FFMFormat_hash(df, label, path, category_feature = [], continuous_feature = 
             field_index = field_index + 1
         feats = gen_hashed_fmm_feats(feats)
         print('%s %s' % (df[label][i], ' '.join(feats)))
-        data.write('%s %s\n' % (df[label][i], ' '.join(feats)))
-    data.close()
+        if i < train_len:
+            train.write('%s %s\n' % (df[label][i], ' '.join(feats)))
+        else:
+            test.write('%s\n' % (' '.join(feats)))
+    train.close()
+    test.close()
     
-FFMFormat_hash(df, 'label', '../data/ffm/data.ffm', category_feature, continuous_feature, vector_feature)
+FFMFormat_hash(df, 'label', '../data/ffm/', train_len, category_feature, continuous_feature, vector_feature)
