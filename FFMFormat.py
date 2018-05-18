@@ -24,11 +24,13 @@ def FFMFormat(df, label, path, train_len, category_feature = [], continuous_feat
             field_index = field_index + 1
 
         for j, feat in enumerate(continuous_feature):
-            t = feat + '_' + str(df[feat][i])
-            if t not in  feat_index.keys():
-                feat_index[t] = feature_index
-                feature_index = feature_index + 1
-            feats.append('%s:%s:%s' % (field_index, feat_index[t], df[feat][i]))
+            #t = feat + '_' + str(df[feat][i])
+            #if t not in  feat_index.keys():
+            #    feat_index[t] = feature_index
+            #    feature_index = feature_index + 1
+            #feats.append('%s:%s:%s' % (field_index, feat_index[t], df[feat][i]))
+            feats.append('%s:%s:%s' % (field_index, feature_index, df[feat][i]))
+            feature_index = feature_index + 1
             field_index = field_index + 1
 
         for j, feat in enumerate(vector_feature):
