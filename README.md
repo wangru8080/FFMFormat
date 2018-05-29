@@ -4,7 +4,6 @@ FM和FFM模型是最近几年提出的模型，凭借其在数据量比较大并
 
 pandas到libffm的转化可参考kaggle的TalkingData AdTracking Fraud Detection Challenge竞赛：https://www.kaggle.com/mpearmain/pandas-to-libffm
 
-<a href="http://write.blog.csdn.net/postlist" target="_blank">http://write.blog.csdn.net/postlist</a>
 
 ## Data Format(libffm格式)
 
