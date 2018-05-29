@@ -2,6 +2,8 @@
 
 FM和FFM模型是最近几年提出的模型，凭借其在数据量比较大并且特征稀疏的情况下，仍然能够得到优秀的性能和效果的特性，常用于计算广告中的CTR，CVR预估。美团点评技术团队写过一篇《深入FFM原理与实践》博客，链接地址：https://tech.meituan.com/deep-understanding-of-ffm-principles-and-practices.html ，写的很详细。然后目前FFM常用的python库有libffm，xlearn等。
 
+pandas到libffm的转化可参考kaggle的TalkingData AdTracking Fraud Detection Challenge竞赛：https://www.kaggle.com/mpearmain/pandas-to-libffm
+
 ## Data Format(libffm格式)
 
 为了使用FFM方法，所有特征必须转化成 
