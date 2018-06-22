@@ -113,7 +113,7 @@ dict_value[vector_feature-9] = 1
     0 0:0:1 1:9:2.2 2:10:1 2:11:1 2:12:1 2:13:1
 
 
-本文仅有category_feature，continuous_feature，vector_feature。若还有其他特征可自行修改添加。
+本文仅有category_feature，continuous_feature，vector_feature。若还有其他特征可自行修改添加。在格式化FFM之前，连续型数据最好归一化，保证能够收敛
 
 libffm库参考：https://github.com/guestwalk/libffm
 
