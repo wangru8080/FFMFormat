@@ -50,4 +50,17 @@ def FFMFormat(df, label, path, train_len, category_feature = [], continuous_feat
     train.close()
     test.close()
     
+def split_tr_va():
+    d = open('data/ffm/train.ffm', 'r')
+
+    tr, va = train_test_split(d.readlines(), test_size = 0.25, random_state = 2018)
+
+    train = open('data/ffm/tr.ffm', 'w')
+    val = open('data/ffm/va.ffm', 'w')
+
+    train.writelines(tr)
+    val.writelines(va)
+    train.close()
+    val.close()
+    d.close()
 FFMFormat(df, 'label', '../data/ffm/', train_len, category_feature, continuous_feature, vector_feature)
