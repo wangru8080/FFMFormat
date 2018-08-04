@@ -38,9 +38,9 @@ class FM(BaseEstimator, TransformerMixin):
 
             with tf.name_scope('init'):
                 weights['feature_embeddings'] = tf.Variable(tf.random_normal([self.feature_size, self.embedding_size], 0.0, 0.01), name='feature_embeddings')
-                self.embeddings = tf.nn.embedding_lookup(weights['feature_embeddings'], self.feature_index) # [None, field_size, 1]
+                self.embeddings = tf.nn.embedding_lookup(weights['feature_embeddings'], self.feature_index) # [None, field_size, embedding_size]
                 feat_value = tf.reshape(self.feature_value, shape=[-1, self.field_size, 1]) # [None, field_size, 1]
-                self.embeddings = tf.multiply(self.embeddings, feat_value) # [None, field_size, 1]
+                self.embeddings = tf.multiply(self.embeddings, feat_value) # [None, field_size, embedding_size]
 
             with tf.name_scope('FM_first_order'):
                 biases['feature_bias'] = tf.Variable(tf.random_uniform([self.feature_size, 1], 0.0, 1.0), name='feature_bias')
