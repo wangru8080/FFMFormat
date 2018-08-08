@@ -57,14 +57,21 @@ class FM(BaseEstimator, TransformerMixin):
                 self.y_second_order = 0.5 * tf.subtract(self.summed_features_emb_square, self.squared_sum_features_emb) # [None, embedding_size]
 
             with tf.name_scope('FM_out'):
-                input_size = self.y_first_order.shape.as_list()[1] + self.y_second_order.shape.as_list()[1]
-                glorot = np.sqrt(2.0 / (input_size + 1))
-                weights['out'] = tf.Variable(
-                    np.random.normal(loc=0, scale=glorot, size=(input_size, 1)),
-                    dtype=np.float32)
-                biases['out_bias'] = tf.Variable(tf.constant(0.01), dtype=np.float32)
-                self.out = tf.concat([self.y_first_order, self.y_second_order], axis=1)
-                self.out = tf.add(tf.matmul(self.out, weights['out']), biases['out_bias'])
+                # input_size = self.y_first_order.shape.as_list()[1] + self.y_second_order.shape.as_list()[1]
+                # glorot = np.sqrt(2.0 / (input_size + 1))
+                # weights['out'] = tf.Variable(
+                #     np.random.normal(loc=0, scale=glorot, size=(input_size, 1)),
+                #     dtype=np.float32)
+                # biases['out_bias'] = tf.Variable(tf.constant(0.01), dtype=np.float32)
+                # self.out = tf.concat([self.y_first_order, self.y_second_order], axis=1)
+                # # biases['w0'] = tf.Variable(tf.random_normal([input_size]), name='fm_w0')
+                # # self.out = tf.add(self.out, biases['w0'])
+                # self.out = tf.add(tf.matmul(self.out, weights['out']), biases['out_bias'])
+                self.linear = tf.reduce_sum(self.y_first_order, axis=1, keep_dims=True) # [None, 1]
+                self.second_order = tf.reduce_sum(self.y_second_order, axis=1, keep_dims=True) # [None, 1]
+                weights['w0'] = tf.Variable(tf.constant(0.0), name='w0')
+                self.y_w0 = tf.multiply(weights['w0'], tf.ones_like(self.second_order)) # [None, 1]
+                self.out = tf.add_n([self.y_w0, self.linear, self.second_order]) # [None, 1]
 
             # loss
             if self.loss_type == 'logloss':
